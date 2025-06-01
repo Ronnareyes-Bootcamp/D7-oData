@@ -67,7 +67,7 @@
                         unit="{CurrencyCode}" />
                     <Text id="qpu" 
                             text="Quantity Per Unit: {QuantityPerUnit}" 
-                            textAlign="Begin"/>
+                            />
                     </VBox>
                     </cells>
                 </ColumnListItem>
