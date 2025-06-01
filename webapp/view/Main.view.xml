@@ -1,0 +1,77 @@
+<mvc:View controllerName="sapips.training.odata.controller.Main"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:p="sap.m.plugins"
+	xmlns="sap.m">
+    
+    <Page id="page" title="{i18n>title}">
+    
+    <Table id="idProductsTable" 
+            inset="false" 
+            items="{path: '/ProductCollection', 
+            sorter: {path: 'Name'}}">
+        
+            <headerToolbar>
+                <OverflowToolbar id="toolbar"> 
+                    <content>
+                        <Title id="product" text="{i18n>productsTitle}" level="H2"/>
+                        <Button id="sort"
+						tooltip="Sort"
+						icon="sap-icon://sort"
+						press="onPressedSort"/>
+                        <Button id="filter"
+						tooltip="Filter"
+						icon="sap-icon://filter"
+						press="onPressedFilter"/>
+                    </content>
+                </OverflowToolbar>
+            </headerToolbar>
+            
+            <infoToolbar>
+                <OverflowToolbar id="toolbar1">
+                    <Label id="lblText" text="{i18n>productsInfo}" />
+                </OverflowToolbar>
+            </infoToolbar>
+            
+            <columns>
+                <Column  id="column2" width="12em">
+                    <Text id="text2" text="{i18n>productColumn}" />
+                </Column>
+                
+                <Column id="column3" minScreenWidth="Tablet" hAlign="Center" demandPopin="true">
+                    <Text id="text3" text="{i18n>supplierIdColumn}" />
+                </Column>
+                
+                <Column id="column4" hAlign="Center">
+                    <Text id="text4" text="{i18n>priceColumn}" />
+                </Column>
+            </columns>
+            
+            <items>
+                <ColumnListItem id="columnList" vAlign="Middle">
+                    <cells>
+                        <ObjectIdentifier id="title"
+                            title="{ProductName}"
+                            text="Product ID: {ProductId}" />
+
+                        <Text id="supName" text="{SupplierID}" />
+
+                    <VBox id="vbox1" class="sapUiTinyMargin">
+                    <ObjectNumber id="price"
+                        textAlign="Center"
+                        number="{
+                        parts:[{path:'UnitPrice'},{path:'CurrencyCode'}],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: { showMeasure: false }
+                        }"
+                        unit="{CurrencyCode}" />
+                    <Text id="qpu" 
+                            text="Quantity Per Unit: {QuantityPerUnit}" 
+                            textAlign="Begin"/>
+                    </VBox>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>
