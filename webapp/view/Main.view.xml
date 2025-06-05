@@ -5,13 +5,11 @@
 	xmlns="sap.m">
     
     <Page id="page" title="{i18n>title}">
-    
     <Table id="idProductsTable" 
-            inset="false" 
-            items="{path: '/ProductCollection', 
-            sorter: {path: 'Name'}}">
-        
-            <headerToolbar>
+            inset="false"
+            items="{path: '/'}" >
+    
+        <headerToolbar>
                 <OverflowToolbar id="toolbar"> 
                     <content>
                         <Title id="product" text="{i18n>productsTitle}" level="H2"/>
@@ -32,7 +30,7 @@
                     <Label id="lblText" text="{i18n>productsInfo}" />
                 </OverflowToolbar>
             </infoToolbar>
-            
+
             <columns>
                 <Column  id="column2" width="12em">
                     <Text id="text2" text="{i18n>productColumn}" />
@@ -46,13 +44,13 @@
                     <Text id="text4" text="{i18n>priceColumn}" />
                 </Column>
             </columns>
-            
+
             <items>
                 <ColumnListItem id="columnList" vAlign="Middle">
                     <cells>
                         <ObjectIdentifier id="title"
                             title="{ProductName}"
-                            text="Product ID: {ProductId}" />
+                            text="Product ID: {ProductID}" />
 
                         <Text id="supName" text="{SupplierID}" />
 
@@ -71,6 +69,7 @@
                     </VBox>
                     </cells>
                 </ColumnListItem>
+
             </items>
         </Table>
     </Page>

@@ -9,12 +9,8 @@ sap.ui.define([
     return Controller.extend("sapips.training.odata.controller.Main", {
 
         onInit: function () {
-            var sUrl = sap.ui.require.toUrl("sapips/training/odata/model/products.json");
-            var oModel = new JSONModel();
-        
-            oModel.loadData(sUrl);
-        
-            this.getView().setModel(oModel);
+            var oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/odata/localService/mainService/data/Products.json"));
+            this.getView().setModel(oModel); 
         },
         onPressedSort: function () {
             if (!this._bSortAsc) {
@@ -34,13 +30,10 @@ sap.ui.define([
             var oTable = this.byId("idProductsTable");
             var oBinding = oTable.getBinding("items");
         
-            if (this._bFiltered) {
-                var oFilter = new sap.ui.model.Filter("Status", sap.ui.model.FilterOperator.NE, "Discontinued");
-                oBinding.filter([oFilter]);
-            } else {
-                oBinding.filter([]);
-            }
-        }
+            const oFilter = new sap.ui.model.Filter("Discontinued", sap.ui.model.FilterOperator.EQ, false);
+ 
+            oBinding.filter([oFilter]);
+          }
         
                
     });
